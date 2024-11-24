@@ -10,20 +10,21 @@ import Login from "./pages/Login";
 import Header from "./components/Header";
 import "./App.css";
 import Footer from "./components/Footer";
+import Profile from "./pages/Profile";
 
 const App: React.FC = () => {
 	const isAuthenticated = useSelector(
 		(state: RootState) => state.auth.isAuthenticated
 	);
-	console.log("authenticated:", isAuthenticated);
 
 	return (
 		<BrowserRouter>
 			<div className="flex flex-col min-h-screen">
 				<Header />
-				<main className="flex-grow">
+				<main className="flex-grow pt-8 sm:mx-2 mx-6">
 					<Routes>
 						<Route path="/login" element={<Login />} />
+						<Route path="/profile" element={<Profile />} />
 						<Route path="/" element={<Home />} />
 						<Route path="/cart" element={<Cart />} />
 						<Route
