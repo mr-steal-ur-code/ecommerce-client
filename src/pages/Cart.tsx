@@ -21,7 +21,15 @@ const Cart = () => {
 
 	return (
 		<div className="container mx-auto p-2 md:p-6">
-			<h1 className="text-2xl font-bold mb-6">Shopping Cart</h1>
+			<h1 className="flex flex-row gap-16 text-2xl font-bold mb-6">
+				Shopping Cart{" "}
+				<Link
+					className="mt-4 bg-blue-600 text-white px-4 py-2 rounded shadow-md hover:bg-blue-700"
+					to="/checkout"
+				>
+					Checkout
+				</Link>
+			</h1>
 			{cart?.items?.length > 0 ? (
 				<div className="space-y-4">
 					{cart.items.map((item) => (
@@ -79,12 +87,20 @@ const Cart = () => {
 								${cart.totalAmount.toFixed(2)}
 							</span>
 						</p>
-						<button
-							onClick={handleClearCart}
-							className="mt-4 bg-red-600 text-white px-4 py-2 rounded shadow-md hover:bg-red-700"
-						>
-							Clear Cart
-						</button>
+						<div className="flex flex-row justify-around items-center">
+							<button
+								onClick={handleClearCart}
+								className="mt-4 bg-red-600 text-white px-4 py-2 rounded shadow-md hover:bg-red-700"
+							>
+								Clear Cart
+							</button>
+							<Link
+								className="mt-4 bg-blue-600 text-white px-4 py-2 rounded shadow-md hover:bg-blue-700"
+								to="/checkout"
+							>
+								Checkout
+							</Link>
+						</div>
 					</div>
 				</div>
 			) : (
