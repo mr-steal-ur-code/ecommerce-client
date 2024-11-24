@@ -7,9 +7,8 @@ import { loginHandler } from "./utils/loginHandler";
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
-const productsPath = process.env.PRODUCTS_FILE || "./data/products.json";
-const usersPath = process.env.USERS_FILE || "./data/users.json";
+const productsPath = "./data/products.json";
+const usersPath = "./data/users.json";
 
 let products: Product[] = [];
 let users: User[] = [];
@@ -44,8 +43,4 @@ app.get("/users", (req: Request, res: Response) => {
 
 app.post("/login", (req: Request, res: Response) => {
   loginHandler(req, res);
-})
-
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
 });

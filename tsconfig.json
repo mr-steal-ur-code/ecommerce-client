@@ -19,7 +19,8 @@
 		"noImplicitAny": false,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
-		"noFallthroughCasesInSwitch": true
+		"noFallthroughCasesInSwitch": true,
+		"outDir": "dist"
 	},
 	"baseUrl": "./src",
 	"paths": {
