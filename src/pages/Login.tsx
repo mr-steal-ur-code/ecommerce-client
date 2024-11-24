@@ -4,20 +4,21 @@ import { login } from "../redux/authSlice";
 import { useNavigate } from "react-router-dom";
 
 const Login: React.FC = () => {
-	const [email, setEmail] = useState("");
+	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
 	const handleLogin = async () => {
-		if (email.trim() && password.trim()) {
-			const userRes = await fetch("https://something/login", {
+		if (username.trim() && password.trim()) {
+			const userRes = await fetch("https://api-6bhltbpyma-uc.a.run.app/login", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
 				},
-				body: JSON.stringify({ email, password }),
+				body: JSON.stringify({ username, password }),
 			});
+			console.log("userres:", userRes);
 
 			if (!userRes.ok) {
 				throw new Error("Login failed. Check your credentials.");
@@ -38,10 +39,10 @@ const Login: React.FC = () => {
 			<h1>Login</h1>
 			<form>
 				<input
-					type="email"
-					placeholder="Email"
-					value={email}
-					onChange={(e) => setEmail(e.target.value)}
+					type="text"
+					placeholder="username"
+					value={username}
+					onChange={(e) => setUsername(e.target.value)}
 				/>
 				<input
 					type="password"

@@ -1,10 +1,8 @@
 import express, { Request, Response } from "express";
-import dotenv from "dotenv";
 import cors from "cors";
 import fs from "fs";
 import { loginHandler } from "./utils/loginHandler";
-
-dotenv.config();
+import { onRequest } from "firebase-functions/v2/https";
 
 const app = express();
 const productsPath = "./data/products.json";
@@ -28,19 +26,28 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/products", (_req: Request, res: Response) => {
-  if (products) {
+  if (!products.length) {
     res.status(500).send({ error: "Products data not available" });
   }
   res.status(200).send(products);
 });
 
 app.get("/users", (req: Request, res: Response) => {
-  if (users) {
+  if (!users.length) {
     res.status(500).send({ error: "Users data not available" });
   }
   res.status(200).send(users);
 })
 
 app.post("/login", (req: Request, res: Response) => {
-  loginHandler(req, res);
+  const { username, password } = req?.body || { email: "", password: "" };
+  console.log("user-pass:", username, password);
+  const loginRes = loginHandler(username, password);
+  if (typeof loginRes === "string") {
+    res.status(500).send(loginRes)
+  } else res.status(200).send(loginRes)
 });
+
+const api = onRequest({ memory: "256MiB" }, app);
+
+export { api }
