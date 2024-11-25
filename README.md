@@ -2,7 +2,7 @@
 
 This is a modern eCommerce web application built using React, Tailwind CSS, Redux, Node.js, and Express. It demonstrates my ability to develop a full-stack application with a focus on responsive frontend design, robust state management, and seamless backend API integration.
 
-## 🌐 Live Demo: E-Commerce Client
+## 🌐 [Live Demo: E-Commerce Client](https://ecommerce-client-5e29f.web.app/)
 
 ## 🚀 Features
 
