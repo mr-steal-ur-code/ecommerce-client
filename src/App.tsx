@@ -24,7 +24,7 @@ const App: React.FC = () => {
 				<main className="flex-grow pt-8 mx-8 md:mx-16">
 					<Routes>
 						<Route path="/login" element={<Login />} />
-						<Route path="/profile" element={<Profile />} />
+						<Route path="/profile/:id" element={<Profile />} />
 						<Route path="/" element={<Home />} />
 						<Route path="/cart" element={<Cart />} />
 						<Route

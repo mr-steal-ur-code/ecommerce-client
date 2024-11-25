@@ -6,7 +6,7 @@ const Home: React.FC = () => {
 	const [products, setProducts] = useState<Product[]>([]);
 	const [sortedProducts, setSortedProducts] = useState<Product[]>([]);
 	const [selectedCategory, setSelectedCategory] = useState("");
-	const [selectedSort, setSelectedSort] = useState<string>(""); // New state for sorting
+	const [selectedSort, setSelectedSort] = useState<string>("");
 	const [error, setError] = useState("");
 	const [loading, setLoading] = useState(false);
 

@@ -65,7 +65,7 @@ const Header: React.FC = () => {
 									Checkout
 								</Link>
 								<Link
-									to="/profile"
+									to={`/profile/${user?.id}`}
 									className="hover:text-gray-300 block md:inline"
 								>
 									Profile

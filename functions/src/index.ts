@@ -18,7 +18,7 @@ try {
 let users: User[] = [];
 
 try {
-  users = JSON.parse(fs.readFileSync(usersPath, "utf-8"))?.data;
+  users = JSON.parse(fs.readFileSync(usersPath, "utf-8"));
 } catch (error) {
   console.error("Error reading users file:", error);
 }
@@ -40,16 +40,16 @@ app.get("/products/:id", (req: Request, res: Response) => {
 });
 
 app.get("/users", (req: Request, res: Response) => {
-  if (!users.length) {
+  if (!users?.length) {
     res.status(500).send({ error: "Users data not available" });
   } else res.status(200).send(users);
 });
 
 app.get("/users/:id", (req: Request, res: Response) => {
   const { id } = req.params;
-  if (!users.length) {
+  if (!users?.length) {
     res.status(500).send({ error: "User data not available" });
-  } else res.status(200).send(users.filter((user) => user?.id == id));
+  } else res.status(200).send(users?.filter?.((user) => user?.id == Number(id)));
 });
 
 app.post("/login", (req: Request, res: Response) => {

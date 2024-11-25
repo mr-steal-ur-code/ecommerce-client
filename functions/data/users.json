@@ -1,30 +1,30 @@
 [
-    {
-        "id": 1,
-        "email": "john@gmail.com",
-        "username": "john35@d",
-        "password": "johnd",
-        "fullname": "John Doe"
-    },
-    {
-        "id": 2,
-        "email": "morrison@gmail.com",
-        "username": "mor_2314",
-        "password": "morrd",
-        "fullname": "David Morrison"
-    },
-    {
-        "id": 3,
-        "email": "kevin@gmail.com",
-        "username": "kevinryan",
-        "password": "kevinR",
-        "fullname": "Kevin Ryan"
-    },
-    {
-        "id": 4,
-        "email": "don@gmail.com",
-        "username": "donero",
-        "password": "donromer",
-        "fullname": "Don Romer"
-    }
+  {
+    "id": 1,
+    "email": "guest1@gmail.com",
+    "username": "guest1",
+    "password": "password",
+    "fullname": "Guest One"
+  },
+  {
+    "id": 2,
+    "email": "guest2@gmail.com",
+    "username": "guest2",
+    "password": "password",
+    "fullname": "Guest Two"
+  },
+  {
+    "id": 3,
+    "email": "guest3@gmail.com",
+    "username": "guest3",
+    "password": "password",
+    "fullname": "Guest Three"
+  },
+  {
+    "id": 4,
+    "email": "guest4@gmail.com",
+    "username": "guest4",
+    "password": "password",
+    "fullname": "Guest Four"
+  }
 ]
