@@ -4,8 +4,8 @@ import { login } from "../redux/authSlice";
 import { useNavigate } from "react-router-dom";
 
 const Login: React.FC = () => {
-	const [username, setUsername] = useState("");
-	const [password, setPassword] = useState("");
+	const [username, setUsername] = useState("guest1");
+	const [password, setPassword] = useState("password");
 	const [showGuestInfo, setShowGuestInfo] = useState(false);
 	const [error, setError] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
