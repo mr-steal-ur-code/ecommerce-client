@@ -1,12 +1,14 @@
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { addToCart, CartItem } from "../redux/cartSlice";
+import { useState } from "react";
 
 interface ProductProps {
 	product: Product;
 }
 const ProductComponent: React.FC<ProductProps> = ({ product }) => {
 	const dispatch = useDispatch();
+	const [addedToCart, setAddedToCart] = useState(false);
 
 	const handleAddToCart = () => {
 		const cartItem: CartItem = {
@@ -17,6 +19,9 @@ const ProductComponent: React.FC<ProductProps> = ({ product }) => {
 			imageUrl: product?.image,
 		};
 		dispatch(addToCart(cartItem));
+		setAddedToCart(true);
+
+		setTimeout(() => setAddedToCart(false), 2000);
 	};
 
 	return (
@@ -36,9 +41,20 @@ const ProductComponent: React.FC<ProductProps> = ({ product }) => {
 						{product.title}
 					</h2>
 				</Link>
+				{addedToCart && (
+					<div className="mt-2 text-green-500 text-right">
+						Item added to cart!
+					</div>
+				)}
 				<p className="flex flex-row justify-between text-xl font-semibold text-gray-700 mt-2">
 					${product.price}
-					<button onClick={handleAddToCart}>Add to cart</button>
+					<button
+						className="hover:text-green-500 transition-all duration-200 ease-in-out"
+						disabled={addedToCart}
+						onClick={handleAddToCart}
+					>
+						Add to cart
+					</button>
 				</p>
 			</div>
 		</div>

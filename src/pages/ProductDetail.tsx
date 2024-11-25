@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { addToCart, CartItem } from "../redux/cartSlice";
+import { useDispatch } from "react-redux";
 
 const ProductDetail: React.FC = () => {
 	const { id } = useParams<{ id: string }>();
 	const [product, setProduct] = useState<Product>();
 	const [error, setError] = useState("");
+	const [addedToCart, setAddedToCart] = useState(false);
+	const dispatch = useDispatch();
 
 	useEffect(() => {
 		const fetchProduct = async () => {
@@ -32,6 +36,20 @@ const ProductDetail: React.FC = () => {
 		};
 		fetchProduct();
 	}, [id]);
+
+	const handleAddToCart = () => {
+		const cartItem: CartItem = {
+			id: String(product?.id),
+			name: product?.title || "",
+			price: product?.price || 0,
+			quantity: 1,
+			imageUrl: product?.image || "",
+		};
+		dispatch(addToCart(cartItem));
+		setAddedToCart(true);
+
+		setTimeout(() => setAddedToCart(false), 2000);
+	};
 
 	if (error) {
 		return <div className="text-center text-red-600">{error}</div>;
@@ -69,12 +87,16 @@ const ProductDetail: React.FC = () => {
 					<p className="mt-4 text-gray-500">
 						<span className="font-semibold">Category:</span> {product.category}
 					</p>
+					{addedToCart && (
+						<div className="mt-4 text-green-500">Item added to cart!</div>
+					)}
 					<div className="mt-6 flex justify-start space-x-4">
-						<button className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none">
+						<button
+							disabled={addedToCart}
+							onClick={handleAddToCart}
+							className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none"
+						>
 							Add to Cart
-						</button>
-						<button className="px-6 py-3 bg-gray-300 text-gray-800 font-semibold rounded-lg shadow-md hover:bg-gray-400 focus:outline-none">
-							View Similar
 						</button>
 					</div>
 				</div>
