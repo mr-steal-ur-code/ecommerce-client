@@ -1,41 +1,43 @@
-#🛒 E-Commerce Project
+# 🛒 E-Commerce Project
+
 This is a modern eCommerce web application built using React, Tailwind CSS, Redux, Node.js, and Express. It demonstrates my ability to develop a full-stack application with a focus on responsive frontend design, robust state management, and seamless backend API integration.
 
-#🌐 Live Demo: E-Commerce Client
+## 🌐 Live Demo: E-Commerce Client
 
-#🚀 Features
+## 🚀 Features
 
-🔒 User Authentication: Log in to access personalized account details.
+- 🔒 User Authentication: Log in to access personalized account details.
 
-🛍️ Product Listings: View products with filtering and sorting options.
+- 🛍️ Product Listings: View products with filtering and sorting options.
 
-🛒 Shopping Cart: Add, update, and remove items, then proceed to checkout.
+- 🛒 Shopping Cart: Add, update, and remove items, then proceed to checkout.
 
-📦 Ordering: Place orders and manage order history.
+- 📦 Ordering: Place orders and manage order history.
 
-📱 Responsive Design: Optimized for mobile and desktop views with Tailwind CSS.
+- 📱 Responsive Design: Optimized for mobile and desktop views with Tailwind CSS.
 
-🌟 State Management: Redux handles the global state for user authentication, cart, and orders.
+- 🌟 State Management: Redux handles the global state for user authentication, cart, and orders.
 
-🔗 Backend API: Built with Express.js to manage products and user data.
+- 🔗 Backend API: Built with Express.js to manage products and user data.
 
-#🛠️ Tech Stack
+## 🛠️ **Tech Stack**
 
-Frontend
+### **Frontend**
 
-Framework: React
+- Framework: **React**
+- Styling: **Tailwind CSS**
+- State Management: **Redux**
 
-Styling: Tailwind CSS
+### **Backend**
 
-State Management: Redux
+- Runtime: **Node.js**
+- Framework: **Express**
 
-Backend
+---
 
-Node.js
+## ✨ **Author**
 
-Express
-
-#✨ Author
-NovaSynx --CJ Karkut--
+**NovaSynx**  
+_CJ Karkut_
 
 [Portfolio](https://portfolio-18062.web.app/)
