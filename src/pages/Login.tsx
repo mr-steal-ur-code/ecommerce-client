@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 const Login: React.FC = () => {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
+	const [showGuestInfo, setShowGuestInfo] = useState(false);
 	const [error, setError] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
 	const dispatch = useDispatch();
@@ -47,6 +48,20 @@ const Login: React.FC = () => {
 	return (
 		<div className="flex items-center justify-center p-8 bg-gray-100">
 			<div className="w-full max-w-sm bg-white rounded-lg shadow-md p-6">
+				<div className="relative mb-4">
+					<button
+						onClick={() => setShowGuestInfo(!showGuestInfo)}
+						className="text-sm text-blue-600 hover:underline focus:outline-none"
+					>
+						{showGuestInfo ? "Hide" : "Show"} Guest Login Credentials
+					</button>
+					{showGuestInfo && (
+						<div className="absolute left-0 mt-2 p-4 bg-white shadow-lg rounded-lg border border-gray-300 w-full">
+							<p className="text-gray-800 mb-2">Username: guest1</p>
+							<p className="text-gray-800">Password: password</p>
+						</div>
+					)}
+				</div>
 				<h1 className="text-2xl font-semibold text-gray-800 text-center mb-4">
 					Login
 				</h1>
