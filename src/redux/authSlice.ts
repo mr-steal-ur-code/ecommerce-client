@@ -9,7 +9,7 @@ interface AuthState {
 const initialState: AuthState = {
   isAuthenticated: false,
   user: {
-    id: "",
+    id: null,
     fullname: "",
     email: "",
     username: '',
@@ -36,7 +36,7 @@ const authSlice = createSlice({
     logout(state) {
       state.isAuthenticated = false;
       state.user = {
-        id: "",
+        id: null,
         fullname: "",
         email: "",
         username: '',

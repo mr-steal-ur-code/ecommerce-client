@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import { logout } from "../redux/authSlice";
+import { clearCart } from "../redux/cartSlice";
 
 const Header: React.FC = () => {
 	const dispatch = useDispatch();
@@ -14,6 +15,7 @@ const Header: React.FC = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 
 	const handleLogout = () => {
+		dispatch(clearCart());
 		dispatch(logout());
 	};
 

@@ -58,7 +58,7 @@ const ProductDetail: React.FC = () => {
 		dispatch(addToCart(cartItem));
 		setAddedToCart(true);
 
-		setTimeout(() => setAddedToCart(false), 2000);
+		setTimeout(() => setAddedToCart(false), 1500);
 	};
 
 	if (error) {
@@ -83,11 +83,17 @@ const ProductDetail: React.FC = () => {
 					<h1 className="text-3xl font-semibold text-gray-800">
 						{product?.title}
 					</h1>
-					<p className="text-xl font-bold text-green-600 mt-2">
-						${product?.price}
+					<p className="text-xl font-bold text-gray-600 mt-2">
+						<span className="text-md align-top">$</span>
+						<span className="text-3xl font-extrabold">
+							{Math.floor(product?.price)}
+						</span>
+						<sup className="text-sm align-super">
+							{Math.round((product?.price % 1) * 100)}
+						</sup>
 					</p>
 					<div className="flex items-center space-x-2 mt-4">
-						<span className="text-yellow-400">★</span>
+						<span className="text-warning">★</span>
 						<span className="text-gray-700">{product?.rating?.rate}</span>
 						<span className="text-gray-500">
 							({product?.rating?.count} reviews)
@@ -100,7 +106,7 @@ const ProductDetail: React.FC = () => {
 					{addedToCart && (
 						<div className="mt-4 text-green-500">Item added to cart!</div>
 					)}
-					<div className="mt-6 flex justify-start gap-4">
+					<div className="mt-6 flex items-start justify-start gap-4">
 						<button
 							disabled={addedToCart}
 							onClick={handleAddToCart}
@@ -108,7 +114,11 @@ const ProductDetail: React.FC = () => {
 						>
 							Add to Cart
 						</button>
-						{quantityInCart && <span>{quantityInCart} in Cart</span>}
+						{quantityInCart > 0 && (
+							<span className="text-sm text-gray-500">
+								{quantityInCart} in cart.
+							</span>
+						)}
 					</div>
 				</div>
 			</div>

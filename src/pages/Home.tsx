@@ -69,14 +69,13 @@ const Home: React.FC = () => {
 			<nav className="flex justify-end mb-4">
 				<Link
 					to="/cart"
-					className="text-blue-600 hover:text-blue-800 underline transition duration-200 mx-2"
+					className="text-center min-w-20 text-blue-600 bg-white rounded-lg p-1 hover:bg-gray-200 hover:text-blue-800 mx-2 transition-all duration-300"
 				>
 					Cart
 				</Link>
-				<span>|</span>
 				<Link
 					to="/checkout"
-					className="text-blue-600 hover:text-blue-800 underline transition duration-200 mx-2"
+					className="text-center min-w-20 text-blue-600 bg-white rounded-lg p-1 hover:bg-gray-200 hover:text-blue-800 mx-2 transition-all duration-300"
 				>
 					Checkout
 				</Link>
