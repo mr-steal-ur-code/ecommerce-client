@@ -109,14 +109,14 @@ const Home: React.FC = () => {
 			{loading && (
 				<div>
 					<div className="mb-16">
-						<div className="skeleton skeleton-image"></div>
-						<div className="skeleton skeleton-text sm:w-[80%] w-[60%]"></div>
+						<div className="skeleton-stacked skeleton skeleton-image"></div>
+						<div className="skeleton-stacked skeleton skeleton-text sm:w-[80%] w-[60%]"></div>
 					</div>
-					<div className="skeleton skeleton-image"></div>
-					<div className="skeleton skeleton-text sm:w-[80%] w-[60%]"></div>
+					<div className="skeleton-stacked skeleton skeleton-image"></div>
+					<div className="skeleton-stacked skeleton skeleton-text sm:w-[80%] w-[60%]"></div>
 				</div>
 			)}
-			{sortedProducts?.length > 0 ? (
+			{sortedProducts?.length ? (
 				sortedProducts.map((product: Product) => (
 					<ProductComponent key={product.id} product={product} />
 				))

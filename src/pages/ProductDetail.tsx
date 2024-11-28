@@ -66,7 +66,19 @@ const ProductDetail: React.FC = () => {
 	}
 
 	if (!product) {
-		return <div className="m-auto mt-16 spinner"></div>;
+		return (
+			<div className="m-auto mt-4 md:mt-12">
+				<div className="flex flex-col md:flex-row items-center mb-16">
+					<div className="skeleton skeleton-image mb-4 md:mb-0 md:mr-4"></div>
+					<div className="flex flex-col sm:w-[95%] w-[60%] md:w-[75%]">
+						<div className="skeleton skeleton-text mb-4 w-full"></div>
+						<div className="skeleton skeleton-text w-[40%]"></div>
+						<div className="skeleton skeleton-text w-[40%]"></div>
+						<div className="skeleton skeleton-text w-[40%]"></div>
+					</div>
+				</div>
+			</div>
+		);
 	}
 
 	return (
@@ -104,7 +116,7 @@ const ProductDetail: React.FC = () => {
 						<span className="font-semibold">Category:</span> {product.category}
 					</p>
 					{addedToCart && (
-						<div className="mt-4 text-green-500">Item added to cart!</div>
+						<div className="mt-4 text-green-500">Item added to cart</div>
 					)}
 					<div className="mt-6 flex items-start justify-start gap-4">
 						<button

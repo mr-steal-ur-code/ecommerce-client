@@ -53,7 +53,7 @@ const ProductComponent: React.FC<ProductProps> = ({ product }) => {
 				</Link>
 				{addedToCart && (
 					<div className="mt-2 text-green-500 text-right">
-						Item added to cart!
+						Item added to cart
 					</div>
 				)}
 				<div className="flex justify-between items-baseline">

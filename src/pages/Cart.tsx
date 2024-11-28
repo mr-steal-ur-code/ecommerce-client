@@ -8,6 +8,12 @@ const Cart: React.FC = () => {
 	const cart = useSelector((state: RootState) => state.cart);
 
 	const handleRemoveFromCart = (id: string) => {
+		if (
+			!confirm(
+				"Are you sure you want to remove this item from your cart? This action cannot be undone."
+			)
+		)
+			return;
 		dispatch(removeFromCart(id));
 	};
 
@@ -16,6 +22,12 @@ const Cart: React.FC = () => {
 	};
 
 	const handleClearCart = () => {
+		if (
+			!confirm(
+				"Are you sure you want to clear your cart? This action cannot be undone, and all items in your cart will be removed."
+			)
+		)
+			return;
 		dispatch(clearCart());
 	};
 
