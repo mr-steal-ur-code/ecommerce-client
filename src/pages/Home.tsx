@@ -120,9 +120,9 @@ const Home: React.FC = () => {
 				sortedProducts.map((product: Product) => (
 					<ProductComponent key={product.id} product={product} />
 				))
-			) : (
+			) : !loading ? (
 				<div className="text-center text-gray-600">No products available</div>
-			)}
+			) : null}
 		</div>
 	);
 };

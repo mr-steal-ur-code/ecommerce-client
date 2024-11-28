@@ -21,7 +21,7 @@ const App: React.FC = () => {
 		<BrowserRouter>
 			<div className="flex flex-col min-h-screen">
 				<Header />
-				<main className="flex-grow pt-8 mx-8 md:mx-16">
+				<main className="flex-grow pt-24 mx-8 md:mx-16">
 					<Routes>
 						<Route path="/login" element={<Login />} />
 						<Route path="/profile/:id" element={<Profile />} />
