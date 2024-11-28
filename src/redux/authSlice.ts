@@ -13,7 +13,8 @@ const initialState: AuthState = {
     fullname: "",
     email: "",
     username: '',
-    password: ''
+    password: '',
+    avatar: ''
   },
   password: null,
 };
@@ -22,6 +23,20 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
+    updateUser(state, action: PayloadAction<Partial<User>>) {
+      if (action.payload.fullname) {
+        state.user.fullname = action.payload.fullname;
+      }
+      if (action.payload.email) {
+        state.user.email = action.payload.email;
+      }
+      if (action.payload.username) {
+        state.user.username = action.payload.username;
+      }
+      if (action.payload.avatar) {
+        state.user.avatar = action.payload.avatar;
+      }
+    },
     login(state, action: PayloadAction<User>) {
       state.isAuthenticated = true;
       state.user = {
@@ -29,7 +44,8 @@ const authSlice = createSlice({
         fullname: action.payload.fullname,
         email: action.payload.email,
         username: action.payload.username,
-        password: action.payload.password
+        password: action.payload.password,
+        avatar: action.payload.avatar
       };
       state.password = action.payload.password;
     },
@@ -40,13 +56,14 @@ const authSlice = createSlice({
         fullname: "",
         email: "",
         username: '',
-        password: ''
+        password: '',
+        avatar: ''
       };
       state.password = null;
     },
   },
 });
 
-export const { login, logout } = authSlice.actions;
+export const { updateUser, login, logout } = authSlice.actions;
 
 export default authSlice.reducer;
