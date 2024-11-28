@@ -110,7 +110,7 @@ const Checkout: React.FC = () => {
 								</div>
 								<button
 									type="submit"
-									className="w-full bg-blue-600 text-white py-2 rounded-md shadow-md hover:bg-blue-700 focus:outline-none"
+									className="w-full bg-primary text-white py-2 rounded-md shadow-md hover:bg-primaryHover focus:outline-none"
 								>
 									Complete Purchase
 								</button>

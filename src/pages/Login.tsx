@@ -89,7 +89,7 @@ const Login: React.FC = () => {
 						disabled={isLoading}
 						type="button"
 						onClick={handleLogin}
-						className="w-full px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:outline-none"
+						className="w-full px-4 py-2 bg-primary text-white font-semibold rounded-lg hover:bg-primaryHover focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:outline-none"
 					>
 						{isLoading ? "Logging in..." : "Login"}
 					</button>

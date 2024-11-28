@@ -3,7 +3,7 @@ import { removeFromCart, updateQuantity, clearCart } from "../redux/cartSlice";
 import { RootState } from "../redux/store";
 import { Link } from "react-router-dom";
 
-const Cart = () => {
+const Cart: React.FC = () => {
 	const dispatch = useDispatch();
 	const cart = useSelector((state: RootState) => state.cart);
 
@@ -24,7 +24,7 @@ const Cart = () => {
 			<h1 className="flex flex-row gap-16 text-2xl font-bold mb-6">
 				Shopping Cart{" "}
 				<Link
-					className="mt-4 bg-blue-600 text-white px-4 py-2 rounded shadow-md hover:bg-blue-700"
+					className="mt-4 bg-primary text-white px-4 py-2 rounded shadow-md hover:bg-primaryHover"
 					to="/checkout"
 				>
 					Checkout
@@ -95,7 +95,7 @@ const Cart = () => {
 								Clear Cart
 							</button>
 							<Link
-								className="mt-4 bg-blue-600 text-white px-4 py-2 rounded shadow-md hover:bg-blue-700"
+								className="mt-4 bg-primary text-white px-4 py-2 rounded shadow-md hover:bg-primaryHover"
 								to="/checkout"
 							>
 								Checkout

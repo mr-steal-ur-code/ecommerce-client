@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { addToCart, CartItem } from "../redux/cartSlice";
-import { useDispatch } from "react-redux";
+import { addToCart, type CartItem } from "../redux/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { type RootState } from "../redux/store";
 
 const ProductDetail: React.FC = () => {
 	const { id } = useParams<{ id: string }>();
+	const cart = useSelector((state: RootState) => state.cart);
+	const [quantityInCart, setQuantityInCart] = useState(0);
 	const [product, setProduct] = useState<Product>();
 	const [error, setError] = useState("");
 	const [addedToCart, setAddedToCart] = useState(false);
@@ -36,6 +39,13 @@ const ProductDetail: React.FC = () => {
 		};
 		fetchProduct();
 	}, [id]);
+
+	useEffect(() => {
+		const cartItem = cart?.items?.filter(
+			(item) => Number(item.id) == Number(product?.id)
+		)[0];
+		setQuantityInCart(cartItem?.quantity || 0);
+	}, [cart?.items, product?.id]);
 
 	const handleAddToCart = () => {
 		const cartItem: CartItem = {
@@ -90,14 +100,15 @@ const ProductDetail: React.FC = () => {
 					{addedToCart && (
 						<div className="mt-4 text-green-500">Item added to cart!</div>
 					)}
-					<div className="mt-6 flex justify-start space-x-4">
+					<div className="mt-6 flex justify-start gap-4">
 						<button
 							disabled={addedToCart}
 							onClick={handleAddToCart}
-							className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none"
+							className="px-6 py-3 font-semibold rounded-lg shadow-md border-2 hover:border-primaryHover focus:outline-none transition-all duration-300"
 						>
 							Add to Cart
 						</button>
+						{quantityInCart && <span>{quantityInCart} in Cart</span>}
 					</div>
 				</div>
 			</div>

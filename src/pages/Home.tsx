@@ -81,39 +81,30 @@ const Home: React.FC = () => {
 					Checkout
 				</Link>
 			</nav>
-			<header className="text-center mb-8">
-				<h1 className="text-4xl font-bold text-gray-800">
-					Welcome to CJ's E-Commerce App
-				</h1>
-				<p className="mt-2 text-gray-600 text-lg">Browse our products below:</p>
+			<header className="text-center mb-2">
+				<p className="mt-2 text-gray-600 text-lg">Browse our products below</p>
 			</header>
-			<div className="max-w-4xl mx-auto px-4">
-				<div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-6">
-					<div className="flex items-center gap-2 w-full sm:w-auto">
-						<select
-							value={selectedCategory}
-							onChange={handleFilterChange}
-							className="w-full sm:max-w-xs p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-						>
-							<option value="">Select Category</option>
-							<option value="men's clothing">Men's Clothing</option>
-							<option value="women's clothing">Women's Clothing</option>
-							<option value="jewelery">Jewelry</option>
-							<option value="electronics">Electronics</option>
-						</select>
-					</div>
-					<div className="flex items-center gap-2 w-full sm:w-auto">
-						<select
-							value={selectedSort}
-							onChange={handleSortChange}
-							className="w-full sm:max-w-xs p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-						>
-							<option value="">Select Sort Option</option>
-							<option value="lowest">Lowest Price</option>
-							<option value="highest">Highest Price</option>
-						</select>
-					</div>
-				</div>
+			<div className="flex justify-end items-center gap-2 w-full text-sm mb-6">
+				<select
+					value={selectedCategory}
+					onChange={handleFilterChange}
+					className="border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-1 focus:ring-primaryHover"
+				>
+					<option value="">Select Category</option>
+					<option value="men's clothing">Men's Clothing</option>
+					<option value="women's clothing">Women's Clothing</option>
+					<option value="jewelery">Jewelry</option>
+					<option value="electronics">Electronics</option>
+				</select>
+				<select
+					value={selectedSort}
+					onChange={handleSortChange}
+					className="border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-1 focus:ring-primaryHover"
+				>
+					<option value="">Select Sort Option</option>
+					<option value="lowest">Lowest Price</option>
+					<option value="highest">Highest Price</option>
+				</select>
 			</div>
 
 			{loading && (
