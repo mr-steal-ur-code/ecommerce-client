@@ -7,50 +7,62 @@ const Home: React.FC = () => {
 	const [sortedProducts, setSortedProducts] = useState<Product[]>([]);
 	const [selectedCategory, setSelectedCategory] = useState("");
 	const [selectedSort, setSelectedSort] = useState<string>("");
+	const [search, setSearch] = useState("");
 	const [error, setError] = useState("");
 	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
 		const fetchProducts = async () => {
 			setLoading(true);
-			setTimeout(async () => {
-				const productRes = await fetch(
-					"https://api-6bhltbpyma-uc.a.run.app/products",
-					{
-						method: "GET",
-						headers: {
-							"Content-Type": "application/json",
-						},
-					}
-				);
-				if (productRes.ok) {
-					setLoading(false);
-					setProducts(await productRes.json());
-				} else {
-					setLoading(false);
-					setError("Error Fetching Products");
+			const productRes = await fetch(
+				"https://api-6bhltbpyma-uc.a.run.app/products",
+				{
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+					},
 				}
-			}, 1000);
+			);
+			if (productRes.ok) {
+				setLoading(false);
+				setProducts(await productRes.json());
+			} else {
+				setLoading(false);
+				setError("Error Fetching Products");
+			}
 		};
 		fetchProducts();
 	}, []);
 
 	useEffect(() => {
-		let sortedProducts = [...products];
-		if (selectedSort === "lowest") {
-			sortedProducts.sort((a, b) => a.price - b.price);
-		} else if (selectedSort === "highest") {
-			sortedProducts.sort((a, b) => b.price - a.price);
-		}
+		let filteredProducts = [...products];
 
 		if (selectedCategory) {
-			sortedProducts = sortedProducts.filter(
+			filteredProducts = filteredProducts.filter(
 				(product) => product?.category === selectedCategory
 			);
 		}
 
-		setSortedProducts(sortedProducts);
-	}, [products, selectedCategory, selectedSort]);
+		if (search) {
+			filteredProducts = filteredProducts.filter(
+				(product) =>
+					product.title?.toLowerCase().includes(search.toLowerCase()) ||
+					product.description?.toLowerCase().includes(search.toLowerCase())
+			);
+		}
+
+		if (selectedSort === "lowest") {
+			filteredProducts.sort((a, b) => a.price - b.price);
+		} else if (selectedSort === "highest") {
+			filteredProducts.sort((a, b) => b.price - a.price);
+		}
+
+		setSortedProducts(filteredProducts);
+	}, [products, selectedCategory, selectedSort, search]);
+
+	const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setSearch(e.target.value);
+	};
 
 	const handleFilterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
 		setSelectedCategory(e.target.value);
@@ -105,6 +117,13 @@ const Home: React.FC = () => {
 					<option value="highest">Highest Price</option>
 				</select>
 			</div>
+
+			<input
+				className="w-full p-1 rounded-md focus:outline-none"
+				placeholder="Search"
+				type="search"
+				onInput={handleSearch}
+			/>
 
 			{loading && (
 				<div>

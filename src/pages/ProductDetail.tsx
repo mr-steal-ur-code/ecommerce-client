@@ -15,27 +15,25 @@ const ProductDetail: React.FC = () => {
 
 	useEffect(() => {
 		const fetchProduct = async () => {
-			setTimeout(async () => {
-				const productRes = await fetch(
-					`https://api-6bhltbpyma-uc.a.run.app/products/${id}`,
-					{
-						method: "GET",
-						headers: {
-							"Content-Type": "application/json",
-						},
-					}
-				);
-				if (productRes.ok) {
-					const productData = await productRes?.json();
-					if (
-						productData &&
-						Array.isArray(productData) &&
-						productData.length > 0
-					) {
-						setProduct(productData[0]);
-					}
-				} else setError("Error Finding Item");
-			}, 1000);
+			const productRes = await fetch(
+				`https://api-6bhltbpyma-uc.a.run.app/products/${id}`,
+				{
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+					},
+				}
+			);
+			if (productRes.ok) {
+				const productData = await productRes?.json();
+				if (
+					productData &&
+					Array.isArray(productData) &&
+					productData.length > 0
+				) {
+					setProduct(productData[0]);
+				}
+			} else setError("Error Finding Item");
 		};
 		fetchProduct();
 	}, [id]);
